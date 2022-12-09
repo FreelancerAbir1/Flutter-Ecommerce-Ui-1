@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/Sign_Up_Screen/otp_verification/otp_verification_screen.dart';
+import 'package:flutter1/Auth/Sign_Up_Screen/otp_verification/otp_verification_screen.dart';
 import 'package:flutter1/Model/primary_class.dart';
 
 class CustomContinueButton extends StatelessWidget {

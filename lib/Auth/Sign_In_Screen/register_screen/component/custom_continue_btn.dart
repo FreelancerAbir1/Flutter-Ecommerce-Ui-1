@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/Sign_Up_Screen/complete_profile/complete_profile.dart';
+import 'package:flutter1/Auth/Sign_Up_Screen/complete_profile/complete_profile.dart';
 
 import '../../../../Model/primary_class.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/Sign_In_Screen/Forgot_Screen/forgot_screen.dart';
+import 'package:flutter1/Auth/Sign_In_Screen/Forgot_Screen/forgot_screen.dart';
 
 import '../../../../constant.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/Sign_In_Screen/Login_Success/component/back_to_home_btn.dart';
+import 'package:flutter1/Auth/Sign_In_Screen/Login_Success/component/back_to_home_btn.dart';
 
 import 'login_success_image.dart';
 import 'login_success_text.dart';

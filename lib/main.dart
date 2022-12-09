@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/auth_change.dart';
+import 'package:flutter1/Auth/auth_change.dart';
 import 'package:flutter1/constant.dart';
 import 'package:flutter1/routes.dart';
 

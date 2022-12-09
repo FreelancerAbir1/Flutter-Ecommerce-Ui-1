@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/Sign_In_Screen/Forgot_Screen/components/email_input_field.dart';
+import 'package:flutter1/Auth/Sign_In_Screen/Forgot_Screen/components/email_input_field.dart';
 import 'custom_continue_btn.dart';
 import 'description_text.dart';
 import 'forgot_text.dart';

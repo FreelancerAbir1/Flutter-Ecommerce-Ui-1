@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Authentic/Sign_In_Screen/register_screen/component/input_field.dart';
-import 'package:flutter1/Authentic/Sign_In_Screen/register_screen/component/social_account.dart';
+import 'package:flutter1/Auth/Sign_In_Screen/register_screen/component/input_field.dart';
+import 'package:flutter1/Auth/Sign_In_Screen/register_screen/component/social_account.dart';
 import 'condition_text.dart';
 import 'custom_continue_btn.dart';
 import 'desc_text.dart';
