@@ -15,58 +15,115 @@ class MainBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [
-        const BannerBoard(
-          cTxt: 'Cashback ${'20'}%',
-          sTxt: 'A Summer Day',
-        ),
-        const Categories(),
-        const SpecialAndSeeMoreButton(
-          text: 'Special For you',
-          txt: 'See more',
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...List.generate(
-                bannerProduct.length,
-                (index) => SpecialBannerCard(
-                  bannerProduct: bannerProduct[index],
-                ),
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth <= 500) {
+        ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            const BannerBoard(
+              cTxt: 'Cashback ${'20'}%',
+              sTxt: 'A Summer Day',
+            ),
+            const Categories(),
+            const SpecialAndSeeMoreButton(
+              text: 'Special For you',
+              txt: 'See more',
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ...List.generate(
+                    bannerProduct.length,
+                    (index) => SpecialBannerCard(
+                      bannerProduct: bannerProduct[index],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
+            const PopularAndMoreScreen(
+              text: 'Popular Products',
+              txt: 'See more',
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ...List.generate(
+                    product.length,
+                    (index) => PopularProductCard(
+                      product: product[index],
+                      press: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => DetailsScreen(
+                              index: index,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      }
+      return ListView(
+        scrollDirection: Axis.vertical,
+        children: [
+          const BannerBoard(
+            cTxt: 'Cashback ${'20'}%',
+            sTxt: 'A Summer Day',
           ),
-        ),
-        const PopularAndMoreScreen(
-          text: 'Popular Products',
-          txt: 'See more',
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ...List.generate(
-                product.length,
-                (index) => PopularProductCard(
-                  product: product[index],
-                  press: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => DetailsScreen(
-                          index: index,
+          const Categories(),
+          const SpecialAndSeeMoreButton(
+            text: 'Special For you',
+            txt: 'See more',
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...List.generate(
+                  bannerProduct.length,
+                  (index) => SpecialBannerCard(
+                    bannerProduct: bannerProduct[index],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const PopularAndMoreScreen(
+            text: 'Popular Products',
+            txt: 'See more',
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...List.generate(
+                  product.length,
+                  (index) => PopularProductCard(
+                    product: product[index],
+                    press: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => DetailsScreen(
+                            index: index,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }

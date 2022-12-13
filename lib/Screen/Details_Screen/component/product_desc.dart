@@ -11,11 +11,14 @@ class ProductDesc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: kDefaultFontNormal.fontWeight,
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: kDefaultFontNormal.fontWeight,
+        ),
       ),
     );
   }

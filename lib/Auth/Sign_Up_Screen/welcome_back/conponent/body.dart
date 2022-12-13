@@ -15,98 +15,81 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(builder: (context, orientation) {
-      if (orientation == Orientation.portrait) {
-        return portraitMode(context);
-      }
-      return landscapeMode(context);
-    });
-  }
-
-  Padding landscapeMode(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                WelcomeBackText(text: 'Welcome Back'),
-                WelcomeBackDesc(
-                    text:
-                        'Complete your Detail and continue\n with social media'),
-                SocialAccount(),
-                SignUpScreen(
-                  text: 'Don\'t have an account?',
-                  txt: 'Sign Up',
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                InputField(
-                    hintEmail: 'Enter your Email',
-                    labelEmail: 'Email',
-                    hintPass: 'Enter your password',
-                    labePass: 'Password'),
-                ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
-                CustomContinueButton(text: "Continue"),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  SizedBox portraitMode(BuildContext context) {
+    double currentWidth = MediaQuery.of(context).size.width;
+    double currentHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            SizedBox(
-              height: 20,
-            ),
-            WelcomeBackText(text: 'Welcome Back'),
-            WelcomeBackDesc(
-                text: 'Complete your Detail and continue\n with social media'),
-            SizedBox(
-              height: 50,
-            ),
-            InputField(
-                hintEmail: 'Enter your Email',
-                labelEmail: 'Email',
-                hintPass: 'Enter your password',
-                labePass: 'Password'),
-            SizedBox(
-              height: 50,
-            ),
-            ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
-            SizedBox(
-              height: 50,
-            ),
-            CustomContinueButton(text: "Continue"),
-            SizedBox(
-              height: 50,
-            ),
-            SocialAccount(),
-            SizedBox(
-              height: 50,
-            ),
-            SignUpScreen(
-              text: 'Don\'t have an account?',
-              txt: 'Sign Up',
-            ),
-          ],
-        ),
-      ),
+      height: currentHeight,
+      width: currentWidth,
+      child: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth <= 500) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              WelcomeBackText(text: 'Welcome Back'),
+              WelcomeBackDesc(
+                  text:
+                      'Complete your Detail and continue\n with social media'),
+              Spacer(),
+              InputField(
+                  hintEmail: 'Enter your Email',
+                  labelEmail: 'Email',
+                  hintPass: 'Enter your password',
+                  labePass: 'Password'),
+              ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
+              CustomContinueButton(text: "Continue"),
+              Spacer(),
+              SocialAccount(),
+              Spacer(),
+              SignUpScreen(
+                text: 'Don\'t have an account?',
+                txt: 'Sign Up',
+              ),
+              SizedBox(
+                height: 20,
+              )
+            ],
+          );
+        }
+        return SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              WelcomeBackText(text: 'Welcome Back'),
+              WelcomeBackDesc(
+                  text:
+                      'Complete your Detail and continue\n with social media'),
+              SizedBox(
+                height: 10 * 3,
+              ),
+              InputField(
+                  hintEmail: 'Enter your Email',
+                  labelEmail: 'Email',
+                  hintPass: 'Enter your password',
+                  labePass: 'Password'),
+              SizedBox(
+                height: 10 * 3,
+              ),
+              ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
+              SizedBox(
+                height: 10 * 3,
+              ),
+              CustomContinueButton(text: "Continue"),
+              SizedBox(
+                height: 10 * 3,
+              ),
+              SocialAccount(),
+              SizedBox(
+                height: 10 * 3,
+              ),
+              SignUpScreen(
+                text: 'Don\'t have an account?',
+                txt: 'Sign Up',
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

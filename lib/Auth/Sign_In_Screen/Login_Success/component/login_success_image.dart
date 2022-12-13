@@ -9,12 +9,9 @@ class LoginSuccessImg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(),
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height / 2,
-        child: Image.asset(img),
-      ),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 2,
+      child: Image.asset(img),
     );
   }
 }

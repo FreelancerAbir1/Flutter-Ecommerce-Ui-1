@@ -12,33 +12,53 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          SizedBox(
-            height: 30,
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth <= 500) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              SizedBox(
+                height: 30,
+              ),
+              ForgotText(text: 'forgot Password'),
+              SizedBox(
+                height: 10,
+              ),
+              DescriptionText(
+                text:
+                    'Please enter your Email and we sent a verification\n code and return the code ',
+              ),
+              Spacer(),
+              EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
+              Spacer(),
+              CustomContinueButton(text: "Continue"),
+              Spacer(),
+              SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           ),
-          ForgotText(text: 'forgot Password'),
-          SizedBox(
-            height: 10,
-          ),
-          DescriptionText(
-            text:
-                'Please enter your Email and we sent a verification\n code and return the code ',
-          ),
-          Spacer(),
-          EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
-          Spacer(),
-          CustomContinueButton(text: "Continue"),
-          Spacer(),
-          SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
-          SizedBox(
-            height: 20,
-          ),
-        ],
-      ),
-    );
+        );
+      }
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            ForgotText(text: 'forgot Password'),
+            DescriptionText(
+              text:
+                  'Please enter your Email and we sent a verification\n code and return the code ',
+            ),
+            EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
+            CustomContinueButton(text: "Continue"),
+            SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
+          ],
+        ),
+      );
+    });
   }
 }

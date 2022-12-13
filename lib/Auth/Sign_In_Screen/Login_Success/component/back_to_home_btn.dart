@@ -9,8 +9,15 @@ class BackToHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryClass().customPrimaryButton(context, () {
-      Navigator.pushReplacementNamed(context, HomeScreen.routName);
-    }, text);
+    double currentWidth = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      width: currentWidth <= 500 ? currentWidth / 1.1 : currentWidth / 1.7,
+      child: Center(
+        child: PrimaryClass().customPrimaryButton(context, () {
+          Navigator.pushReplacementNamed(context, HomeScreen.routName);
+        }, text),
+      ),
+    );
   }
 }

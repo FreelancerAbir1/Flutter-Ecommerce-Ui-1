@@ -13,69 +13,91 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      width: double.infinity,
-      child: Column(
-        children: [
-          const Spacer(
-            flex: 1,
-          ),
-          const OtpText(otpText: 'OTP Verification'),
-          const SizedBox(
-            height: 20,
-          ),
-          const OtpDesc(otpDes: 'We sent your code to '),
-          const Spacer(
-            flex: 2,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth <= 500) {
+          return Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            width: double.infinity,
+            child: Column(
+              children: [
+                const Spacer(
+                  flex: 1,
+                ),
+                const OtpText(otpText: 'OTP Verification'),
+                const SizedBox(
+                  height: 20,
+                ),
+                const OtpDesc(otpDes: 'We sent your code to '),
+                const Spacer(
+                  flex: 2,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ...List.generate(
+                      4,
+                      (index) => buildOtpBox(
+                        context,
+                        '*',
+                        (val) {},
+                      ),
+                    )
+                  ],
+                ),
+                const Spacer(
+                  flex: 2,
+                ),
+                const CustomContinueButton(text: 'Continue'),
+                const Spacer(
+                  flex: 2,
+                ),
+                const ResendCodeText(text: 'Resend Otp Code'),
+                const Spacer(
+                  flex: 1,
+                ),
+              ],
+            ),
+          );
+        }
+
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              buildOtpBox(
-                context,
-                '*',
-                (val) {},
+              const OtpText(otpText: 'OTP Verification'),
+              const OtpDesc(otpDes: 'We sent your code to '),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ...List.generate(
+                    4,
+                    (index) => buildOtpBox(
+                      context,
+                      '*',
+                      (val) {},
+                    ),
+                  )
+                ],
               ),
-              buildOtpBox(
-                context,
-                '*',
-                (val) {},
-              ),
-              buildOtpBox(
-                context,
-                '*',
-                (val) {},
-              ),
-              buildOtpBox(
-                context,
-                '*',
-                (val) {},
-              ),
+              const CustomContinueButton(text: 'Continue'),
+              const ResendCodeText(text: 'Resend Otp Code'),
             ],
           ),
-          const Spacer(
-            flex: 2,
-          ),
-          const CustomContinueButton(text: 'Continue'),
-          const Spacer(
-            flex: 2,
-          ),
-          const ResendCodeText(text: 'Resend Otp Code'),
-          const Spacer(
-            flex: 1,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
   Container buildOtpBox(BuildContext context, String obScure, onChange) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: size.height / 14,
-      width: size.width / 6,
+      height: 60,
+      width: 60,
       padding: const EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
         border: Border.all(

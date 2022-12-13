@@ -46,20 +46,23 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Spacer(
-          flex: 1,
-        ),
-        ProfileImage(profilePic: profilePic, imagePicker: imagePicker),
-        const SizedBox(
-          height: 30,
-        ),
-        ...List.generate(
-          profileList.length,
-          (index) => profileList[index],
-        ),
-      ],
+    double currentWidth = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: currentWidth,
+      child: ListView(
+        children: [
+          ProfileImage(profilePic: profilePic, imagePicker: imagePicker),
+          const SizedBox(
+            height: 30,
+          ),
+          ...List.generate(
+            profileList.length,
+            (index) => profileList[index],
+          ),
+        ],
+      ),
     );
   }
 }

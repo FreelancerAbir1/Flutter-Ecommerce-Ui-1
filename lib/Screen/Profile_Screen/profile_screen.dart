@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter1/Screen/home_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'component/profile_body.dart';
 
@@ -11,9 +13,21 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('Profile'),
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(HomeScreen.routName);
+                },
+                icon: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: SvgPicture.asset('assets/icons/Back ICon.svg'),
+                ));
+          },
+        ),
       ),
       body: ProfileBody(),
     );

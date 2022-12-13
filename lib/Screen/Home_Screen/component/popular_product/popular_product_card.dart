@@ -19,8 +19,8 @@ class PopularProductCard extends StatelessWidget {
       child: GestureDetector(
         onTap: press,
         child: Container(
-          height: size.height / 8,
-          width: size.width / 3,
+          height: 120,
+          width: 250,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(width: 01, color: Colors.black12),

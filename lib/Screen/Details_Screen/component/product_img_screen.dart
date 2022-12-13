@@ -9,10 +9,13 @@ class ProductImagScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 3.5,
+      height: size.height,
+      width: size.width,
       child: Padding(
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(25.0),
         child: Image.asset(
           img,
           fit: BoxFit.cover,

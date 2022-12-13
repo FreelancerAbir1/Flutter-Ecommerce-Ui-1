@@ -35,115 +35,111 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(builder: (context, orientation) {
-      if (orientation == Orientation.portrait) {
-        return portraitMode();
-      }
-      return landscapeMode();
-    });
-  }
-
-  SafeArea landscapeMode() {
-    return SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: PageView.builder(
-              onPageChanged: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              dragStartBehavior: DragStartBehavior.start,
-              itemCount: data.length,
-              itemBuilder: (context, index) => OnBoardingView(
-                img: data[index]['img'].toString(),
-                text: data[index]['text'].toString(),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth <= 500) {
+          return SizedBox(
+            width: double.infinity,
             child: Column(
               children: [
-                const Spacer(
-                  flex: 1,
+                SizedBox(
+                  height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Spacer(),
-                    ...List.generate(
-                      data.length,
-                      (index) =>
-                          DotGenerate(currentIndex: currentIndex, index: index),
-                    ),
-                    const Spacer(),
-                  ],
-                ),
-                const Spacer(
+                Expanded(
                   flex: 2,
+                  child: SizedBox(
+                    width: 300,
+                    child: PageView.builder(
+                      onPageChanged: (index) {
+                        setState(() {
+                          currentIndex = index;
+                        });
+                      },
+                      dragStartBehavior: DragStartBehavior.start,
+                      itemCount: data.length,
+                      itemBuilder: (context, index) => OnBoardingView(
+                        img: data[index]['img'].toString(),
+                        text: data[index]['text'].toString(),
+                      ),
+                    ),
+                  ),
                 ),
-                const CustomContinueButton(text: 'Continue'),
-                const Spacer(flex: 2),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      const Spacer(
+                        flex: 1,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Spacer(),
+                          ...List.generate(
+                            data.length,
+                            (index) => DotGenerate(
+                                currentIndex: currentIndex, index: index),
+                          ),
+                          const Spacer(),
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 2,
+                      ),
+                      const CustomContinueButton(text: 'Continue'),
+                      const Spacer(flex: 2),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  SafeArea portraitMode() {
-    return SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: PageView.builder(
-              onPageChanged: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              dragStartBehavior: DragStartBehavior.start,
-              itemCount: data.length,
-              itemBuilder: (context, index) => OnBoardingView(
-                img: data[index]['img'].toString(),
-                text: data[index]['text'].toString(),
+          );
+        }
+        return Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              flex: 3,
+              child: SizedBox(
+                width: 300,
+                child: PageView.builder(
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                  dragStartBehavior: DragStartBehavior.start,
+                  itemCount: data.length,
+                  itemBuilder: (context, index) => OnBoardingView(
+                    img: data[index]['img'].toString(),
+                    text: data[index]['text'].toString(),
+                  ),
+                ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              children: [
-                const Spacer(
-                  flex: 1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Spacer(),
-                    ...List.generate(
-                      data.length,
-                      (index) =>
-                          DotGenerate(currentIndex: currentIndex, index: index),
-                    ),
-                    const Spacer(),
-                  ],
-                ),
-                const Spacer(
-                  flex: 2,
-                ),
-                const CustomContinueButton(text: 'Continue'),
-                const Spacer(flex: 2),
-              ],
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ...List.generate(
+                        data.length,
+                        (index) => DotGenerate(
+                            currentIndex: currentIndex, index: index),
+                      ),
+                    ],
+                  ),
+                  const CustomContinueButton(text: 'Continue'),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 }

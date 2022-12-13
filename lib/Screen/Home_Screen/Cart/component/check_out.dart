@@ -15,13 +15,18 @@ class CheckOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double sizeWidth = MediaQuery.of(context).size.width;
+    double sizeHeight = MediaQuery.of(context).size.height;
     return Container(
+      height: sizeWidth <= 500 ? sizeHeight / 6 : sizeHeight / 3.5,
+      width: sizeWidth,
+      padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: decoration(),
-      padding: const EdgeInsets.all(18.0),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CircleAvatar(
                 radius: 25,
@@ -30,39 +35,32 @@ class CheckOut extends StatelessWidget {
                   imgNote,
                 ),
               ),
-              const Spacer(
-                flex: 5,
-              ),
-              const VoucherCodedButton(),
-              const Spacer(
-                flex: 1,
-              ),
-              SvgPicture.asset(imgBack),
+              Row(
+                children: [
+                  const VoucherCodedButton(),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  SvgPicture.asset(imgBack),
+                ],
+              )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Text.rich(
-                  TextSpan(
-                    text: 'Total:\n ${'\$325.12'}',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: kDefaultFontBold.fontWeight,
-                      color: kTextColor,
-                    ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text.rich(
+                TextSpan(
+                  text: 'Total:\n ${'\$325.12'}',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: kDefaultFontBold.fontWeight,
+                    color: kTextColor,
                   ),
                 ),
-                const Spacer(
-                  flex: 5,
-                ),
-                const CheckOutButton(),
-                const Spacer(
-                  flex: 1,
-                ),
-              ],
-            ),
+              ),
+              const CheckOutButton(),
+            ],
           ),
         ],
       ),
