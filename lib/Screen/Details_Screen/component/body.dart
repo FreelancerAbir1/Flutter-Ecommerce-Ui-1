@@ -25,8 +25,7 @@ class _BodyState extends State<Body> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return LayoutBuilder(builder: (context, constraints) {
+     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth <= 500) {
         return Column(
           children: [
@@ -120,7 +119,7 @@ class _BodyState extends State<Body> {
                     ),
                     PrimaryClass()
                         .customPrimaryButton(context, () {}, 'Add to Card'),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     )
                   ],

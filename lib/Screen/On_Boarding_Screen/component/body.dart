@@ -42,7 +42,7 @@ class _BodyState extends State<Body> {
             width: double.infinity,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(
@@ -97,7 +97,7 @@ class _BodyState extends State<Body> {
         }
         return Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(

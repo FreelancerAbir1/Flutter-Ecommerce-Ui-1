@@ -94,8 +94,7 @@ class Body extends StatelessWidget {
   }
 
   Container buildOtpBox(BuildContext context, String obScure, onChange) {
-    var size = MediaQuery.of(context).size;
-    return Container(
+     return Container(
       height: 60,
       width: 60,
       padding: const EdgeInsets.only(left: 20),

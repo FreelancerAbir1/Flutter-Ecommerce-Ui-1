@@ -33,10 +33,8 @@ class MyApp extends StatelessWidget {
       routes: route,
       home: const ResponsiveLayout(
         myAndroidView: MyAndroidView(),
-        myTabletView: MyTabletView(),
         myWindowsView: MyWindowsView(),
         myAppleView: MyAppleView(),
-        myIpadView: MyIpadView(),
         myMacView: MyMacView(),
       ),
     );

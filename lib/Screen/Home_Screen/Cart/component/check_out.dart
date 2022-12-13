@@ -20,7 +20,7 @@ class CheckOut extends StatelessWidget {
     return Container(
       height: sizeWidth <= 500 ? sizeHeight / 6 : sizeHeight / 3.5,
       width: sizeWidth,
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: decoration(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,7 @@ class CheckOut extends StatelessWidget {
               Row(
                 children: [
                   const VoucherCodedButton(),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   SvgPicture.asset(imgBack),
