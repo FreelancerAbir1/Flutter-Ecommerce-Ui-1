@@ -18,52 +18,60 @@ class Body extends StatelessWidget {
       width: size.width,
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth <= 500) {
-          return Column(
-            children: [
-              const Spacer(),
-              const LoginSuccessImg(img: 'assets/images/success.png'),
-              const Spacer(),
-              const LoginSuccessText(text: 'Login Success'),
-              const Spacer(),
-              BackHomeButton(
-                text: 'Back to Home',
-                press: () {
-                  Navigator.of(context).pushNamed(DecitionScreen.routName);
-                },
-              ),
-              const Spacer(),
-            ],
-          );
+          return portraitMode(context);
         }
-        return SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-              const LoginSuccessImg(img: 'assets/images/success.png'),
-              const SizedBox(
-                height: 30,
-              ),
-              const LoginSuccessText(text: 'Login Success'),
-              const SizedBox(
-                height: 30,
-              ),
-              BackHomeButton(
-                text: 'Back to Home',
-                press: () {
-                  Navigator.of(context).pushNamed(DecitionScreen.routName);
-                },
-              ),
-              const SizedBox(
-                height: 10 * 3,
-              ),
-            ],
-          ),
-        );
+        return landscapeMode(context);
       }),
     );
+  }
+
+  SingleChildScrollView landscapeMode(BuildContext context) {
+    return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            const LoginSuccessImg(img: 'assets/images/success.png'),
+            const SizedBox(
+              height: 30,
+            ),
+            const LoginSuccessText(text: 'Login Success'),
+            const SizedBox(
+              height: 30,
+            ),
+            BackHomeButton(
+              text: 'Back to Home',
+              press: () {
+                Navigator.of(context).pushNamed(DecitionScreen.routName);
+              },
+            ),
+            const SizedBox(
+              height: 10 * 3,
+            ),
+          ],
+        ),
+      );
+  }
+
+  Column portraitMode(BuildContext context) {
+    return Column(
+          children: [
+            const Spacer(),
+            const LoginSuccessImg(img: 'assets/images/success.png'),
+            const Spacer(),
+            const LoginSuccessText(text: 'Login Success'),
+            const Spacer(),
+            BackHomeButton(
+              text: 'Back to Home',
+              press: () {
+                Navigator.of(context).pushNamed(DecitionScreen.routName);
+              },
+            ),
+            const Spacer(),
+          ],
+        );
   }
 }

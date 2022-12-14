@@ -20,90 +20,98 @@ class Body extends StatelessWidget {
       width: size.width,
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth <= 500) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 10 * 3,
-              ),
-              const RegisterText(text: 'Back to Home'),
-              const SizedBox(
-                height: 15,
-              ),
-              const DescriptionText(
-                  text:
-                      'Complete your details on continue\n with social media.'),
-              const SizedBox(
-                height: 10 * 3,
-              ),
-              const InputField(
-                hintEmail: 'Enter your Email',
-                labelEmail: 'Email',
-                hintPass: 'Enter your password',
-                labelPass: 'Password',
-                reEnterHintPass: 'Re_enter   password',
-                reEnterLabelPass: 'Password',
-              ),
-              const SizedBox(
-                height: 10 * 3,
-              ),
-              CustomContinueButton(
-                text: 'Continue',
-                press: () {
-                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                },
-              ),
-              const Spacer(),
-              const SocialAccount(),
-              const Spacer(),
-              const ConditionText(),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
-          );
+          return portraitMode(context);
         }
-        return SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:   [
-              const RegisterText(text: 'Back to Home'),
-              const DescriptionText(
-                  text:
-                      'Complete your details on continue\n with social media.'),
-              const SizedBox(
-                height: 30,
-              ),
-              const InputField(
-                hintEmail: 'Enter your Email',
-                labelEmail: 'Email',
-                hintPass: 'Enter your password',
-                labelPass: 'Password',
-                reEnterHintPass: 'Re_enter   password',
-                reEnterLabelPass: 'Password',
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-                CustomContinueButton(
-                text: 'Continue',
-                press: () {
-                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const SocialAccount(),
-              const SizedBox(
-                height: 20,
-              ),
-              const ConditionText(),
-            ],
-          ),
-        );
+        return landscapeMode(context);
       }),
     );
+  }
+
+  SingleChildScrollView landscapeMode(BuildContext context) {
+    return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:   [
+            const RegisterText(text: 'Back to Home'),
+            const DescriptionText(
+                text:
+                    'Complete your details on continue\n with social media.'),
+            const SizedBox(
+              height: 30,
+            ),
+            const InputField(
+              hintEmail: 'Enter your Email',
+              labelEmail: 'Email',
+              hintPass: 'Enter your password',
+              labelPass: 'Password',
+              reEnterHintPass: 'Re_enter   password',
+              reEnterLabelPass: 'Password',
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+              CustomContinueButton(
+              text: 'Continue',
+              press: () {
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const SocialAccount(),
+            const SizedBox(
+              height: 20,
+            ),
+            const ConditionText(),
+          ],
+        ),
+      );
+  }
+
+  Column portraitMode(BuildContext context) {
+    return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 10 * 3,
+            ),
+            const RegisterText(text: 'Back to Home'),
+            const SizedBox(
+              height: 15,
+            ),
+            const DescriptionText(
+                text:
+                    'Complete your details on continue\n with social media.'),
+            const SizedBox(
+              height: 10 * 3,
+            ),
+            const InputField(
+              hintEmail: 'Enter your Email',
+              labelEmail: 'Email',
+              hintPass: 'Enter your password',
+              labelPass: 'Password',
+              reEnterHintPass: 'Re_enter   password',
+              reEnterLabelPass: 'Password',
+            ),
+            const SizedBox(
+              height: 10 * 3,
+            ),
+            CustomContinueButton(
+              text: 'Continue',
+              press: () {
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+              },
+            ),
+            const Spacer(),
+            const SocialAccount(),
+            const Spacer(),
+            const ConditionText(),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
+        );
   }
 }
