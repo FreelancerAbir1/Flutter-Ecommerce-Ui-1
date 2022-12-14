@@ -131,20 +131,22 @@ class _BodyState extends State<Body> {
           ],
         );
       }
-      return Center(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
+      return Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 1.1,
+              width: MediaQuery.of(context).size.width,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   ProductImagScreen(
                     img: widget.product.productMiniImg[currentIndex],
                   ),
-                  Positioned(bottom: 0, child: buildMiniImg()),
+                  Positioned(bottom: 40, child: buildMiniImg()),
                   Positioned(
-                    top: 0,
+                    top: 40,
                     child: Text(
                       widget.product.producttitle,
                       style: TextStyle(
@@ -156,79 +158,76 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ProductDesc(text: widget.product.productDes),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const SeeMoreDetails(
-                          text: 'See more Details',
-                          icon: 'assets/icons/arrow_right.svg',
-                        ),
-                        FavButton(
-                          img: 'assets/icons/Heart Icon_2.svg',
-                          product: product[currentIndex],
-                        ),
-                      ],
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
+          ),
+          Expanded(
+            flex: 1,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 1.1,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesc(text: widget.product.productDes),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SeeMoreDetails(
+                        text: 'See more Details',
+                        icon: 'assets/icons/arrow_right.svg',
                       ),
-                      child: Row(
-                        children: [
-                          ...List.generate(
-                            product.length,
-                            (index) => Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: widget.product.productColor[index],
-                                ),
+                      FavButton(
+                        img: 'assets/icons/Heart Icon_2.svg',
+                        product: product[currentIndex],
+                      ),
+                    ],
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        ...List.generate(
+                          product.length,
+                          (index) => Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: widget.product.productColor[index],
                               ),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: kTextLightColor,
-                                child: SvgPicture.asset(
-                                    'assets/icons/remove.svg'),
-                              ),
-                              CircleAvatar(
-                                backgroundColor: kTextLightColor,
-                                child: SvgPicture.asset(
-                                    'assets/icons/Plus Icon.svg'),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
+                        ),
+                        Spacer(),
+                        CircleAvatar(
+                          backgroundColor: kTextLightColor,
+                          child: SvgPicture.asset('assets/icons/remove.svg'),
+                        ),
+                        Spacer(),
+                        CircleAvatar(
+                          backgroundColor: kTextLightColor,
+                          child: SvgPicture.asset('assets/icons/Plus Icon.svg'),
+                        ),
+                        Spacer(),
+                      ],
                     ),
-                    CustomButton(
-                      text: 'Add to Cart',
-                      press: () {},
-                    ),
-                  ],
-                ),
+                  ),
+                  CustomButton(
+                    text: 'Add to Cart',
+                    press: () {},
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     });
   }

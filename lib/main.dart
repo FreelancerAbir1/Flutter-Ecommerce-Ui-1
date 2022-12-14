@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter1/Responsive/responsive.dart';
 import 'package:flutter1/constant.dart';
 import 'package:flutter1/routes.dart';
- 
+
 import 'Responsive/Android View/android_view.dart';
 import 'Responsive/Apple View/apple_view.dart';
-import 'Responsive/Mac View/mac_view.dart'; 
+import 'Responsive/Mac View/mac_view.dart';
 import 'Responsive/Windows View/windows_view.dart';
 
 void main() => runApp(
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'E-commerce Demo',
       theme: ThemeData(
         scaffoldBackgroundColor: kTextLightColor,
         appBarTheme: const AppBarTheme(
@@ -38,4 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
- 

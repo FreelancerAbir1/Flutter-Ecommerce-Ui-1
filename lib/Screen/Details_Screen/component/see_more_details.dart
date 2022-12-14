@@ -16,23 +16,26 @@ class SeeMoreDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Row(
-        children: [
-          Text(
-            text,
-            style: TextStyle(
-              color: kPrimaryColor,
-              fontWeight: kDefaultFontBold.fontWeight,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                color: kPrimaryColor,
+                fontWeight: kDefaultFontBold.fontWeight,
+              ),
             ),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          SvgPicture.asset(
-            icon,
-            color: kPrimaryColor,
-          ),
-        ],
+            const SizedBox(
+              width: 20,
+            ),
+            SvgPicture.asset(
+              icon,
+              color: kPrimaryColor,
+            ),
+          ],
+        ),
       ),
     );
   }
