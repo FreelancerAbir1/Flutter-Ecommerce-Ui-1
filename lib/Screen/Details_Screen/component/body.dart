@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Model/primary_class.dart';
 import 'package:flutter1/Model/product.dart';
+import 'package:flutter1/Screen/Details_Screen/component/custom_btn.dart';
 import 'package:flutter1/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-     return LayoutBuilder(builder: (context, constraints) {
+    return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth <= 500) {
         return Column(
           children: [
@@ -117,8 +117,10 @@ class _BodyState extends State<Body> {
                     const SizedBox(
                       height: 10,
                     ),
-                    PrimaryClass()
-                        .customPrimaryButton(context, () {}, 'Add to Card'),
+                    CustomButton(
+                      text: 'Add to Cart',
+                      press: () {},
+                    ),
                     const SizedBox(
                       height: 10,
                     )
@@ -129,95 +131,104 @@ class _BodyState extends State<Body> {
           ],
         );
       }
-      return Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                ProductImagScreen(
-                  img: widget.product.productMiniImg[currentIndex],
-                ),
-                Positioned(bottom: 0, child: buildMiniImg()),
-                Positioned(
-                  top: 0,
-                  child: Text(
-                    widget.product.producttitle,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: kDefaultFontBold.fontWeight,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      return Center(
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  ProductDesc(text: widget.product.productDes),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SeeMoreDetails(
-                        text: 'See more Details',
-                        icon: 'assets/icons/arrow_right.svg',
-                      ),
-                      FavButton(
-                        img: 'assets/icons/Heart Icon_2.svg',
-                        product: product[currentIndex],
-                      ),
-                    ],
+                  ProductImagScreen(
+                    img: widget.product.productMiniImg[currentIndex],
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
+                  Positioned(bottom: 0, child: buildMiniImg()),
+                  Positioned(
+                    top: 0,
+                    child: Text(
+                      widget.product.producttitle,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: kDefaultFontBold.fontWeight,
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        ...List.generate(
-                          product.length,
-                          (index) => Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: widget.product.productColor[index],
-                              ),
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        CircleAvatar(
-                          backgroundColor: kTextLightColor,
-                          child: SvgPicture.asset('assets/icons/remove.svg'),
-                        ),
-                        const Spacer(),
-                        CircleAvatar(
-                          backgroundColor: kTextLightColor,
-                          child: SvgPicture.asset('assets/icons/Plus Icon.svg'),
-                        )
-                      ],
-                    ),
                   ),
-                  PrimaryClass()
-                      .customPrimaryButton(context, () {}, 'Add to Card'),
                 ],
               ),
             ),
-          ),
-        ],
+            Expanded(
+              flex: 1,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ProductDesc(text: widget.product.productDes),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SeeMoreDetails(
+                          text: 'See more Details',
+                          icon: 'assets/icons/arrow_right.svg',
+                        ),
+                        FavButton(
+                          img: 'assets/icons/Heart Icon_2.svg',
+                          product: product[currentIndex],
+                        ),
+                      ],
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          ...List.generate(
+                            product.length,
+                            (index) => Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: widget.product.productColor[index],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: kTextLightColor,
+                                child: SvgPicture.asset(
+                                    'assets/icons/remove.svg'),
+                              ),
+                              CircleAvatar(
+                                backgroundColor: kTextLightColor,
+                                child: SvgPicture.asset(
+                                    'assets/icons/Plus Icon.svg'),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    CustomButton(
+                      text: 'Add to Cart',
+                      press: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     });
   }

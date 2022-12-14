@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Screen/Home_Screen/Cart/cart_screen.dart';
+import 'package:flutter1/Screen/Cart/cart_screen.dart';
 
 import 'component/main_body.dart';
-import 'component/appbar/action_btn.dart';
-import 'component/appbar/search_bar.dart';
+import 'component/action_btn.dart';
+import 'component/search_bar.dart';
 
-class HomeBody extends StatelessWidget {
-  const HomeBody({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

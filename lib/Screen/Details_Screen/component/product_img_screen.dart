@@ -12,13 +12,12 @@ class ProductImagScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: size.height,
       width: size.width,
       child: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(18.0),
         child: Image.asset(
           img,
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
     );

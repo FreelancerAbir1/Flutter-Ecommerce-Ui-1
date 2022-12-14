@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Auth/Sign_In_Screen/Forgot_Screen/components/email_input_field.dart';
+import 'package:flutter1/Auth/Sign_Up_Screen/otp_verification/otp_verification_screen.dart';
 import 'custom_continue_btn.dart';
 import 'description_text.dart';
 import 'forgot_text.dart';
@@ -18,25 +19,31 @@ class Body extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              SizedBox(
+            children: [
+              const SizedBox(
                 height: 30,
               ),
-              ForgotText(text: 'forgot Password'),
-              SizedBox(
+              const ForgotText(text: 'forgot Password'),
+              const SizedBox(
                 height: 10,
               ),
-              DescriptionText(
+              const DescriptionText(
                 text:
                     'Please enter your Email and we sent a verification\n code and return the code ',
               ),
-              Spacer(),
-              EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
-              Spacer(),
-              CustomContinueButton(text: "Continue"),
-              Spacer(),
-              SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
-              SizedBox(
+              const Spacer(),
+              const EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
+              const Spacer(),
+              CustomContinueButton(
+                text: "Continue",
+                press: () {
+                  Navigator.of(context)
+                      .pushNamed(OtpVerificationScreen.routeName);
+                },
+              ),
+              const Spacer(),
+              const SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
+              const SizedBox(
                 height: 20,
               ),
             ],
@@ -47,15 +54,21 @@ class Body extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            ForgotText(text: 'forgot Password'),
-            DescriptionText(
+          children: [
+            const ForgotText(text: 'forgot Password'),
+            const DescriptionText(
               text:
                   'Please enter your Email and we sent a verification\n code and return the code ',
             ),
-            EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
-            CustomContinueButton(text: "Continue"),
-            SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
+            const EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
+            CustomContinueButton(
+              text: "Continue",
+              press: () {
+                Navigator.of(context)
+                    .pushNamed(OtpVerificationScreen.routeName);
+              },
+            ),
+            const SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
           ],
         ),
       );

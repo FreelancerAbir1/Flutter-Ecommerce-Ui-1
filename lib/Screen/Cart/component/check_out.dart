@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../constant.dart';
+import '../../../constant.dart';
 import 'check_out_btn.dart';
 import 'voucher_code_btn.dart';
 

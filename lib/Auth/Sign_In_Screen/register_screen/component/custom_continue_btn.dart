@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_Up_Screen/complete_profile/complete_profile.dart';
 
-import '../../../../Model/primary_class.dart';
+import '../../../../constant.dart';
 
 class CustomContinueButton extends StatelessWidget {
-  const CustomContinueButton({super.key});
+ final Function() press;
+  final String text;
+  const CustomContinueButton({super.key, required this.press, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryClass().customPrimaryButton(context, () {
-      Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-    }, 'Continue');
+    return MaterialButton(
+      onPressed: press,
+      color: kPrimaryColor,
+      height: 50,
+      minWidth: MediaQuery.of(context).size.width / 1.1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+            fontWeight: kDefaultFontBold.fontWeight,
+            fontSize: 20,
+            color: kTextLightColor),
+      ),
+    );
   }
 }

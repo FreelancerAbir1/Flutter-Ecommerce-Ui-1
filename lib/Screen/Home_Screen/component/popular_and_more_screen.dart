@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constant.dart';
+import '../../../constant.dart';
 
-class SpecialAndSeeMoreButton extends StatelessWidget {
-  final String text, txt;
-  const SpecialAndSeeMoreButton({
+class PopularAndMoreScreen extends StatelessWidget {
+  final String text;
+  final String txt;
+  const PopularAndMoreScreen({
     Key? key,
     required this.text,
     required this.txt,

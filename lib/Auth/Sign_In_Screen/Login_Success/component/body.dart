@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/Login_Success/component/back_to_home_btn.dart';
+import 'package:flutter1/Auth/Sign_In_Screen/Login_Success/component/back_btn.dart';
+import 'package:flutter1/Screen/decition_screen.dart';
 
 import 'login_success_image.dart';
 import 'login_success_text.dart';
@@ -18,14 +19,19 @@ class Body extends StatelessWidget {
       child: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth <= 500) {
           return Column(
-            children: const [
-              Spacer(),
-              LoginSuccessImg(img: 'assets/images/success.png'),
-              Spacer(),
-              LoginSuccessText(text: 'Login Success'),
-              Spacer(),
-              BackToHome(text: 'Back to Home'),
-              Spacer(),
+            children: [
+              const Spacer(),
+              const LoginSuccessImg(img: 'assets/images/success.png'),
+              const Spacer(),
+              const LoginSuccessText(text: 'Login Success'),
+              const Spacer(),
+              BackHomeButton(
+                text: 'Back to Home',
+                press: () {
+                  Navigator.of(context).pushNamed(DecitionScreen.routName);
+                },
+              ),
+              const Spacer(),
             ],
           );
         }
@@ -33,20 +39,25 @@ class Body extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              SizedBox(
+            children: [
+              const SizedBox(
                 height: 30,
               ),
-              LoginSuccessImg(img: 'assets/images/success.png'),
-              SizedBox(
+              const LoginSuccessImg(img: 'assets/images/success.png'),
+              const SizedBox(
                 height: 30,
               ),
-              LoginSuccessText(text: 'Login Success'),
-              SizedBox(
+              const LoginSuccessText(text: 'Login Success'),
+              const SizedBox(
                 height: 30,
               ),
-              BackToHome(text: 'Back to Home'),
-              SizedBox(
+              BackHomeButton(
+                text: 'Back to Home',
+                press: () {
+                  Navigator.of(context).pushNamed(DecitionScreen.routName);
+                },
+              ),
+              const SizedBox(
                 height: 10 * 3,
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../../../Auth/Sign_Up_Screen/welcome_back/welcome_back.dart';
 import 'custom_btn.dart';
 import 'dot_generate.dart';
 import 'on_boarding_view.dart';
@@ -86,7 +87,13 @@ class _BodyState extends State<Body> {
                       const Spacer(
                         flex: 2,
                       ),
-                      const CustomContinueButton(text: 'Continue'),
+                      CustomContinueButton(
+                        text: 'Continue',
+                        press: () {
+                          Navigator.pushReplacementNamed(
+                              context, WelcomeBackScreen.routeName);
+                        },
+                      ),
                       const Spacer(flex: 2),
                     ],
                   ),
@@ -133,7 +140,13 @@ class _BodyState extends State<Body> {
                       ),
                     ],
                   ),
-                  const CustomContinueButton(text: 'Continue'),
+                 CustomContinueButton(
+                        text: 'Continue',
+                        press: () {
+                          Navigator.pushReplacementNamed(
+                              context, WelcomeBackScreen.routeName);
+                        },
+                      ),
                 ],
               ),
             ),

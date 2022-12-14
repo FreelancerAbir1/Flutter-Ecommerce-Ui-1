@@ -2,32 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter1/Screen/Profile_Screen/profile_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'Home_Screen/home_body.dart';
+import 'Home_Screen/home_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-  static String routName = '/homescreen';
+class DecitionScreen extends StatefulWidget {
+  const DecitionScreen({super.key});
+  static String routName = '/decitionscreen';
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DecitionScreen> createState() => _DecitionScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DecitionScreenState extends State<DecitionScreen> {
   int currentIndex = 0;
   List<Widget> pages = [
-    const HomeBody(),
+
+    //! home screen============= 
+    const HomeScreen(),
+    //! ========================
     Container(
       height: double.infinity,
       width: double.infinity,
       color: Colors.green,
-    ),
+    ),//! ====================== 
     Scaffold(
       body: Container(
         height: double.infinity,
         width: double.infinity,
         color: Colors.black,
       ),
-    ),
+    ),//! profile screen ======= 
     const ProfileScreen(),
   ];
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../Sign_In_Screen/Login_Success/login_success.dart';
 import '../../../Sign_In_Screen/register_screen/component/social_account.dart';
 import 'custom_continue_btn.dart';
 import 'forgot_text_screen.dart';
@@ -24,27 +25,28 @@ class Body extends StatelessWidget {
         if (constraints.maxWidth <= 500) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              WelcomeBackText(text: 'Welcome Back'),
-              WelcomeBackDesc(
+            children:   [
+              const WelcomeBackText(text: 'Welcome Back'),
+              const WelcomeBackDesc(
                   text:
                       'Complete your Detail and continue\n with social media'),
-              Spacer(),
-              InputField(
+              const Spacer(),
+              const InputField(
                   hintEmail: 'Enter your Email',
                   labelEmail: 'Email',
                   hintPass: 'Enter your password',
                   labePass: 'Password'),
-              ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
-              CustomContinueButton(text: "Continue"),
-              Spacer(),
-              SocialAccount(),
-              Spacer(),
-              SignUpScreen(
+              const ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
+              const Spacer(),
+              CustomContinueButton(text: "Continue",press: (){  Navigator.pushNamed(context, LoginSuccessScreen.routeName);},),
+              const Spacer(),
+              const SocialAccount(),
+              const Spacer(),
+              const SignUpScreen(
                 text: 'Don\'t have an account?',
                 txt: 'Sign Up',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               )
             ],
@@ -54,35 +56,35 @@ class Body extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              WelcomeBackText(text: 'Welcome Back'),
-              WelcomeBackDesc(
+            children:   [
+              const WelcomeBackText(text: 'Welcome Back'),
+              const WelcomeBackDesc(
                   text:
                       'Complete your Detail and continue\n with social media'),
-              SizedBox(
+              const SizedBox(
                 height: 10 * 3,
               ),
-              InputField(
+              const InputField(
                   hintEmail: 'Enter your Email',
                   labelEmail: 'Email',
                   hintPass: 'Enter your password',
                   labePass: 'Password'),
-              SizedBox(
+              const SizedBox(
                 height: 10 * 3,
               ),
-              ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
-              SizedBox(
+              const ForgotPasswordText(text: 'Remember me', txt: 'Forgot Password'),
+              const SizedBox(
                 height: 10 * 3,
               ),
-              CustomContinueButton(text: "Continue"),
-              SizedBox(
+               CustomContinueButton(text: "Continue",press: (){  Navigator.pushNamed(context, LoginSuccessScreen.routeName);},),
+              const SizedBox(
                 height: 10 * 3,
               ),
-              SocialAccount(),
-              SizedBox(
+              const SocialAccount(),
+              const SizedBox(
                 height: 10 * 3,
               ),
-              SignUpScreen(
+              const SignUpScreen(
                 text: 'Don\'t have an account?',
                 txt: 'Sign Up',
               ),

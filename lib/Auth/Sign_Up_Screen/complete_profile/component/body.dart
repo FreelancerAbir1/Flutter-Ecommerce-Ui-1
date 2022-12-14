@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../Sign_In_Screen/Login_Success/login_success.dart';
 import 'complete_profile.dart';
 import 'complete_profile_desc.dart';
 import 'condition_text.dart';
@@ -23,21 +24,21 @@ class Body extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-              children: const [
-                Spacer(
+              children: [
+                const Spacer(
                   flex: 1,
                 ),
-                CompleteProfileText(text: 'Complete Profile'),
-                SizedBox(
+                const CompleteProfileText(text: 'Complete Profile'),
+                const SizedBox(
                   height: 10,
                 ),
-                CompleteProfileDesc(
+                const CompleteProfileDesc(
                     text:
                         'Complete your Detail and continue\n with social media'),
-                Spacer(
+                const Spacer(
                   flex: 1,
                 ),
-                InputField(
+                const InputField(
                     hintName: 'Enter your name',
                     labelName: 'Name',
                     hintLast: 'Enter your last name',
@@ -46,17 +47,22 @@ class Body extends StatelessWidget {
                     labelNb: 'Number',
                     hintAdd: 'Enter your address',
                     labelAdd: 'Address'),
-                Spacer(
+                const Spacer(
                   flex: 2,
                 ),
-                CustomContinueButton(text: "Continue"),
-                Spacer(
+                CustomContinueButton(
+                    text: "Continue",
+                    press: () {
+                      Navigator.pushReplacementNamed(
+                          context, LoginSuccessScreen.routeName);
+                    }),
+                const Spacer(
                   flex: 1,
                 ),
-                ConditionText(
+                const ConditionText(
                     text:
                         'By continuing your confirm that you \n with our Tearm and Condition'),
-                Spacer(
+                const Spacer(
                   flex: 1,
                 ),
               ],
@@ -69,15 +75,15 @@ class Body extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                CompleteProfileText(text: 'Complete Profile'),
-                CompleteProfileDesc(
+              children:   [
+                const CompleteProfileText(text: 'Complete Profile'),
+                const CompleteProfileDesc(
                     text:
                         'Complete your Detail and continue\n with social media'),
-                SizedBox(
+                const SizedBox(
                   height: 10 * 3,
                 ),
-                InputField(
+                const InputField(
                     hintName: 'Enter your name',
                     labelName: 'Name',
                     hintLast: 'Enter your last name',
@@ -86,14 +92,19 @@ class Body extends StatelessWidget {
                     labelNb: 'Number',
                     hintAdd: 'Enter your address',
                     labelAdd: 'Address'),
-                SizedBox(
+                const SizedBox(
                   height: 10 * 3,
                 ),
-                CustomContinueButton(text: "Continue"),
-                SizedBox(
+                 CustomContinueButton(
+                    text: "Continue",
+                    press: () {
+                      Navigator.pushReplacementNamed(
+                          context, LoginSuccessScreen.routeName);
+                    }),
+                const SizedBox(
                   height: 10 * 3,
                 ),
-                ConditionText(
+                const ConditionText(
                     text:
                         'By continuing your confirm that you \n with our Tearm and Condition'),
               ],

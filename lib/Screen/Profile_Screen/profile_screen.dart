@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Screen/home_screen.dart';
+import 'package:flutter1/Screen/decition_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'component/profile_body.dart';
@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
             return IconButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(HomeScreen.routName);
+                      .pushReplacementNamed(DecitionScreen.routName);
                 },
                 icon: Padding(
                   padding: const EdgeInsets.all(5.0),

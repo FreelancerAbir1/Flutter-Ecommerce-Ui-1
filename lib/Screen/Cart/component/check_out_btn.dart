@@ -1,29 +1,23 @@
-
 import 'package:flutter/material.dart';
 
-import '../../../../constant.dart';
+import '../../../constant.dart';
 
-class CustomContinueButton extends StatelessWidget {
-  final Function() press;
-  final String text;
-  const CustomContinueButton({
+class CheckOutButton extends StatelessWidget {
+  const CheckOutButton({
     Key? key,
-    required this.press,
-    required this.text,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: press,
+      height: 40,
       color: kPrimaryColor,
-      height: 50,
-      minWidth: MediaQuery.of(context).size.width / 1.1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
+      onPressed: () {},
       child: Text(
-        text,
+        'Check Out',
         style: TextStyle(
             fontWeight: kDefaultFontBold.fontWeight,
             fontSize: 20,

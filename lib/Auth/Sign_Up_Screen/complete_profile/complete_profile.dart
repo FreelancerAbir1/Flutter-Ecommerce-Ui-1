@@ -8,8 +8,7 @@ class CompleteProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
+    return Scaffold( 
       appBar: AppBar(
         title: const Text('Sign Up'),
       ),

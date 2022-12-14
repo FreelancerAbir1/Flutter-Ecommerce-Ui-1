@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../constant.dart';
+import '../../../Sign_In_Screen/Login_Success/login_success.dart';
 import 'custom_continue_btn.dart';
 import 'otp_desc.dart';
 import 'otp_text.dart';
@@ -49,7 +50,9 @@ class Body extends StatelessWidget {
                 const Spacer(
                   flex: 2,
                 ),
-                const CustomContinueButton(text: 'Continue'),
+                  CustomContinueButton(text: 'Continue',press: (){
+                     Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                }),
                 const Spacer(
                   flex: 2,
                 ),
@@ -84,7 +87,9 @@ class Body extends StatelessWidget {
                   )
                 ],
               ),
-              const CustomContinueButton(text: 'Continue'),
+              CustomContinueButton(text: 'Continue',press: (){
+                     Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                }),
               const ResendCodeText(text: 'Resend Otp Code'),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Auth/Sign_In_Screen/register_screen/component/input_field.dart';
 import 'package:flutter1/Auth/Sign_In_Screen/register_screen/component/social_account.dart';
+import '../../../Sign_Up_Screen/complete_profile/complete_profile.dart';
 import 'condition_text.dart';
 import 'custom_continue_btn.dart';
 import 'desc_text.dart';
@@ -21,21 +22,21 @@ class Body extends StatelessWidget {
         if (constraints.maxWidth <= 500) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              SizedBox(
+            children: [
+              const SizedBox(
                 height: 10 * 3,
               ),
-              RegisterText(text: 'Back to Home'),
-              SizedBox(
+              const RegisterText(text: 'Back to Home'),
+              const SizedBox(
                 height: 15,
               ),
-              DescriptionText(
+              const DescriptionText(
                   text:
                       'Complete your details on continue\n with social media.'),
-              SizedBox(
+              const SizedBox(
                 height: 10 * 3,
               ),
-              InputField(
+              const InputField(
                 hintEmail: 'Enter your Email',
                 labelEmail: 'Email',
                 hintPass: 'Enter your password',
@@ -43,15 +44,20 @@ class Body extends StatelessWidget {
                 reEnterHintPass: 'Re_enter   password',
                 reEnterLabelPass: 'Password',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10 * 3,
               ),
-              CustomContinueButton(),
-              Spacer(),
-              SocialAccount(),
-              Spacer(),
-              ConditionText(),
-              SizedBox(
+              CustomContinueButton(
+                text: 'Continue',
+                press: () {
+                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                },
+              ),
+              const Spacer(),
+              const SocialAccount(),
+              const Spacer(),
+              const ConditionText(),
+              const SizedBox(
                 height: 20,
               ),
             ],
@@ -61,15 +67,15 @@ class Body extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              RegisterText(text: 'Back to Home'),
-              DescriptionText(
+            children:   [
+              const RegisterText(text: 'Back to Home'),
+              const DescriptionText(
                   text:
                       'Complete your details on continue\n with social media.'),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              InputField(
+              const InputField(
                 hintEmail: 'Enter your Email',
                 labelEmail: 'Email',
                 hintPass: 'Enter your password',
@@ -77,18 +83,23 @@ class Body extends StatelessWidget {
                 reEnterHintPass: 'Re_enter   password',
                 reEnterLabelPass: 'Password',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              CustomContinueButton(),
-              SizedBox(
+                CustomContinueButton(
+                text: 'Continue',
+                press: () {
+                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+                },
+              ),
+              const SizedBox(
                 height: 30,
               ),
-              SocialAccount(),
-              SizedBox(
+              const SocialAccount(),
+              const SizedBox(
                 height: 20,
               ),
-              ConditionText(),
+              const ConditionText(),
             ],
           ),
         );

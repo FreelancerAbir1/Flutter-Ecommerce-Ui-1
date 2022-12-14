@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Screen/Home_Screen/Cart/component/cart_product_card.dart';
+import 'package:flutter1/Screen/Cart/component/cart_product_card.dart';
 
-import '../../../../Model/product.dart';
+import '../../../Model/product.dart';
 import 'first_stor.dart';
 
 class Body extends StatelessWidget {
