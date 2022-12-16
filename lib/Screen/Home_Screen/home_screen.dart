@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Screen/Cart/cart_screen.dart';
-
+import 'package:flutter1/Screen/Cart/cart_screen.dart'; 
 import 'component/main_body.dart';
 import 'component/action_btn.dart';
 import 'component/search_bar.dart';

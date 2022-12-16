@@ -13,42 +13,48 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth <= 500) {
-        return portraitMode(context);
-      }
-      return landscapeMode(context);
-    });
+    var orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.portrait) {
+      return portraitMode(context);
+    }
+    return landscapeMode(context);
   }
 
-  Padding landscapeMode(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const ForgotText(text: 'forgot Password'),
-          const DescriptionText(
-            text:
-                'Please enter your Email and we sent a verification\n code and return the code ',
-          ),
-          const EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
-          CustomContinueButton(
-            text: "Continue",
-            press: () {
-              Navigator.of(context)
-                  .pushNamed(OtpVerificationScreen.routeName);
-            },
-          ),
-          const SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
-        ],
+  SizedBox landscapeMode(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const ForgotText(text: 'forgot Password'),
+            const DescriptionText(
+              text:
+                  'Please enter your Email and we sent a verification\n code and return the code ',
+            ),
+            const EmailInputField(
+                hintText: 'Enter Your Email', labelText: 'Email'),
+            CustomContinueButton(
+              text: "Continue",
+              press: () {
+                Navigator.of(context)
+                    .pushNamed(OtpVerificationScreen.routeName);
+              },
+            ),
+            const SignUpButton(
+                txt: 'Don\'t have an account? ', text: 'Sign Up'),
+          ],
+        ),
       ),
     );
   }
 
   Padding portraitMode(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -64,13 +70,13 @@ class Body extends StatelessWidget {
                   'Please enter your Email and we sent a verification\n code and return the code ',
             ),
             const Spacer(),
-            const EmailInputField(hintText: 'Enter Your Email', labelText: 'Email'),
+            const EmailInputField(
+                hintText: 'Enter Your Email', labelText: 'Email'),
             const Spacer(),
             CustomContinueButton(
               text: "Continue",
               press: () {
-                Navigator.of(context)
-                    .pushNamed(OtpVerificationScreen.routeName);
+                Navigator.of(context).pushNamed(OtpVerificationScreen.routeName);
               },
             ),
             const Spacer(),
@@ -80,6 +86,7 @@ class Body extends StatelessWidget {
             ),
           ],
         ),
-      );
+      ),
+    );
   }
 }

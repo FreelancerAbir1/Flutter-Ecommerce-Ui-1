@@ -14,51 +14,47 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+  var orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.portrait) {
+      return portraitMode(context);
+    }
+    return landscapeMode(context);
+  } 
 
+
+  SizedBox landscapeMode(BuildContext context) {
     return SizedBox(
-      height: size.height,
-      width: size.width,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth <= 500) {
-            return portraitMode(context);
-          }
-
-          return landscapeMode(context);
-        },
-      ),
-    );
-  }
-
-  Column landscapeMode(BuildContext context) {
-    return Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const OtpText(otpText: 'OTP Verification'),
-            const OtpDesc(otpDes: 'We sent your code to '),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
+      width: double.infinity,
+      child: Padding(
+  padding: const EdgeInsets.all(20),        child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ...List.generate(
-                  4,
-                  (index) => buildOtpBox(
-                    context,
-                    '*',
-                    (val) {},
-                  ),
-                )
+                const OtpText(otpText: 'OTP Verification'),
+                const OtpDesc(otpDes: 'We sent your code to '),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ...List.generate(
+                      4,
+                      (index) => buildOtpBox(
+                        context,
+                        '*',
+                        (val) {},
+                      ),
+                    )
+                  ],
+                ),
+                CustomContinueButton(
+                    text: 'Continue',
+                    press: () {
+                      Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                    }),
+                const ResendCodeText(text: 'Resend Otp Code'),
               ],
             ),
-            CustomContinueButton(
-                text: 'Continue',
-                press: () {
-                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-                }),
-            const ResendCodeText(text: 'Resend Otp Code'),
-          ],
-        );
+      ),
+    );
   }
 
   Container portraitMode(BuildContext context) {

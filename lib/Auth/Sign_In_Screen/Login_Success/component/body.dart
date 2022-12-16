@@ -12,66 +12,69 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: size.height,
-      width: size.width,
-      child: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth <= 500) {
-          return portraitMode(context);
-        }
-        return landscapeMode(context);
-      }),
-    );
+    var orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.portrait) {
+      return portraitMode(context);
+    }
+    return landscapeMode(context);
   }
 
   SingleChildScrollView landscapeMode(BuildContext context) {
     return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            const LoginSuccessImg(img: 'assets/images/success.png'),
-            const SizedBox(
-              height: 30,
-            ),
-            const LoginSuccessText(text: 'Login Success'),
-            const SizedBox(
-              height: 30,
-            ),
-            BackHomeButton(
-              text: 'Back to Home',
-              press: () {
-                Navigator.of(context).pushNamed(DecitionScreen.routName);
-              },
-            ),
-            const SizedBox(
-              height: 10 * 3,
-            ),
-          ],
+      scrollDirection: Axis.vertical,
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              const LoginSuccessImg(img: 'assets/images/success.png'),
+              const SizedBox(
+                height: 30,
+              ),
+              const LoginSuccessText(text: 'Login Success'),
+              const SizedBox(
+                height: 30,
+              ),
+              BackHomeButton(
+                text: 'Back to Home',
+                press: () {
+                  Navigator.of(context).pushNamed(DecitionScreen.routName);
+                },
+              ),
+              const SizedBox(
+                height: 10 * 3,
+              ),
+            ],
+          ),
         ),
-      );
+      ),
+    );
   }
 
-  Column portraitMode(BuildContext context) {
-    return Column(
-          children: [
-            const Spacer(),
-            const LoginSuccessImg(img: 'assets/images/success.png'),
-            const Spacer(),
-            const LoginSuccessText(text: 'Login Success'),
-            const Spacer(),
-            BackHomeButton(
-              text: 'Back to Home',
-              press: () {
-                Navigator.of(context).pushNamed(DecitionScreen.routName);
-              },
-            ),
-            const Spacer(),
-          ],
-        );
+  SizedBox portraitMode(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        children: [
+          const Spacer(),
+          const LoginSuccessImg(img: 'assets/images/success.png'),
+          const Spacer(),
+          const LoginSuccessText(text: 'Login Success'),
+          const Spacer(),
+          BackHomeButton(
+            text: 'Back to Home',
+            press: () {
+              Navigator.of(context).pushNamed(DecitionScreen.routName);
+            },
+          ),
+          const Spacer(),
+        ],
+      ),
+    );
   }
 }

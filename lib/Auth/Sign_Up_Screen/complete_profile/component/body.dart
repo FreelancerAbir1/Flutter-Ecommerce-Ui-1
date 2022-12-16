@@ -14,58 +14,56 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
-    return SizedBox(
-      height: size.height,
-      width: size.width,
-      child: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth <= 500) {
-          return portraitMode(context);
-        }
-        return landscapeMode(context);
-      }),
-    );
-  }
+    var orientation = MediaQuery.of(context).orientation;
+    if (orientation == Orientation.portrait) {
+      return portraitMode(context);
+    }
+    return landscapeMode(context);
+  } 
 
   SingleChildScrollView landscapeMode(BuildContext context) {
     return SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const CompleteProfileText(text: 'Complete Profile'),
-            const CompleteProfileDesc(
-                text:
-                    'Complete your Detail and continue\n with social media'),
-            const SizedBox(
-              height: 10 * 3,
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+  padding: const EdgeInsets.all(20),            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const CompleteProfileText(text: 'Complete Profile'),
+                const CompleteProfileDesc(
+                    text:
+                        'Complete your Detail and continue\n with social media'),
+                const SizedBox(
+                  height: 10 * 3,
+                ),
+                const InputField(
+                    hintName: 'Enter your name',
+                    labelName: 'Name',
+                    hintLast: 'Enter your last name',
+                    labelLast: 'Last Name',
+                    hintNb: 'Enter your number',
+                    labelNb: 'Number',
+                    hintAdd: 'Enter your address',
+                    labelAdd: 'Address'),
+                const SizedBox(
+                  height: 10 * 3,
+                ),
+                CustomContinueButton(
+                    text: "Continue",
+                    press: () {
+                      Navigator.pushReplacementNamed(
+                          context, LoginSuccessScreen.routeName);
+                    }),
+                const SizedBox(
+                  height: 10 * 3,
+                ),
+                const ConditionText(
+                    text:
+                        'By continuing your confirm that you \n with our Tearm and Condition'),
+              ],
             ),
-            const InputField(
-                hintName: 'Enter your name',
-                labelName: 'Name',
-                hintLast: 'Enter your last name',
-                labelLast: 'Last Name',
-                hintNb: 'Enter your number',
-                labelNb: 'Number',
-                hintAdd: 'Enter your address',
-                labelAdd: 'Address'),
-            const SizedBox(
-              height: 10 * 3,
-            ),
-            CustomContinueButton(
-                text: "Continue",
-                press: () {
-                  Navigator.pushReplacementNamed(
-                      context, LoginSuccessScreen.routeName);
-                }),
-            const SizedBox(
-              height: 10 * 3,
-            ),
-            const ConditionText(
-                text:
-                    'By continuing your confirm that you \n with our Tearm and Condition'),
-          ],
+          ),
         ),
       );
   }
