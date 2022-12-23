@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter1/Auth/auth_change.dart';
 
-import '../../../Auth/Sign_Up_Screen/welcome_back/welcome_back.dart';
-import 'custom_btn.dart';
-import 'dot_generate.dart';
+import '../../custom_button.dart';
+ import 'dot_generate.dart';
 import 'on_boarding_view.dart';
 
 class Body extends StatefulWidget {
@@ -87,11 +87,11 @@ class _BodyState extends State<Body> {
                       const Spacer(
                         flex: 2,
                       ),
-                      CustomContinueButton(
+                      CustomButton(
                         text: 'Continue',
                         press: () {
                           Navigator.pushReplacementNamed(
-                              context, WelcomeBackScreen.routeName);
+                              context, AuthChangeScreen.routeName);
                         },
                       ),
                       const Spacer(flex: 2),
@@ -140,11 +140,11 @@ class _BodyState extends State<Body> {
                       ),
                     ],
                   ),
-                 CustomContinueButton(
+                 CustomButton(
                         text: 'Continue',
                         press: () {
                           Navigator.pushReplacementNamed(
-                              context, WelcomeBackScreen.routeName);
+                              context, AuthChangeScreen.routeName);
                         },
                       ),
                 ],

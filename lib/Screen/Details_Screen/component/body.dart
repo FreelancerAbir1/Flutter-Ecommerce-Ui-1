@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Model/product.dart';
-import 'package:flutter1/Screen/Details_Screen/component/custom_btn.dart';
-import 'package:flutter1/constant.dart';
+ import 'package:flutter1/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../custom_button.dart';
 import 'product_img_screen.dart';
 import 'fav_btn.dart';
 import 'product_desc.dart';

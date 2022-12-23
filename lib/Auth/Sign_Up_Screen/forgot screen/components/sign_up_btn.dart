@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/register_screen/register_screen.dart';
 
 import '../../../../constant.dart';
 
-class SignUpScreen extends StatelessWidget {
-  final String text, txt;
-  const SignUpScreen({
+class SignUpButton extends StatelessWidget {
+  final String txt, text;
+  final Function()  press;
+  const SignUpButton({
     Key? key,
-    required this.text,
-    required this.txt,
+    required this.txt, required this.text, required this.press, 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          text,
-          style: TextStyle(
-              fontWeight: kDefaultFontNormal.fontWeight, color: kTextColor),
+          txt,
+          style: const TextStyle(
+            color: kTextColor,
+          ),
         ),
         GestureDetector(
-          onTap: () =>
-              Navigator.pushNamed(context, RegisterAccountScreen.routeName),
+          onTap:  press,
           child: Text(
-            txt,
+            text,
             style: TextStyle(
                 fontWeight: kDefaultFontBold.fontWeight,
-                color: kPrimaryColor,
                 fontSize: 20,
+                color: kPrimaryColor,
                 decoration: TextDecoration.underline),
           ),
         ),

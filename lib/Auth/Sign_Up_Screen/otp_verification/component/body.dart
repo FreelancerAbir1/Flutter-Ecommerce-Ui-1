@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../../../constant.dart';
+import 'package:flutter1/Screen/custom_button.dart'; 
+ import '../../../../constant.dart';
 import '../../../Sign_In_Screen/Login_Success/login_success.dart';
-import 'custom_continue_btn.dart';
 import 'otp_desc.dart';
 import 'otp_text.dart';
 import 'resend_code.dart';
@@ -45,7 +44,7 @@ class Body extends StatelessWidget {
                     )
                   ],
                 ),
-                CustomContinueButton(
+                CustomButton(
                     text: 'Continue',
                     press: () {
                       Navigator.pushNamed(context, LoginSuccessScreen.routeName);
@@ -91,7 +90,7 @@ class Body extends StatelessWidget {
           const Spacer(
             flex: 2,
           ),
-          CustomContinueButton(
+          CustomButton(
               text: 'Continue',
               press: () {
                 Navigator.pushNamed(context, LoginSuccessScreen.routeName);

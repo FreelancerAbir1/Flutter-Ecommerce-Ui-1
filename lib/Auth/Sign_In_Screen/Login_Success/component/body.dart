@@ -1,7 +1,8 @@
+ 
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/Login_Success/component/back_btn.dart';
-import 'package:flutter1/Screen/decition_screen.dart';
-
+import 'package:flutter1/Screen/custom_button.dart';
+  
+import '../../../../Screen/decition_screen.dart';
 import 'login_success_image.dart';
 import 'login_success_text.dart';
 
@@ -40,7 +41,7 @@ class Body extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              BackHomeButton(
+              CustomButton(
                 text: 'Back to Home',
                 press: () {
                   Navigator.of(context).pushNamed(DecitionScreen.routName);
@@ -66,7 +67,7 @@ class Body extends StatelessWidget {
           const Spacer(),
           const LoginSuccessText(text: 'Login Success'),
           const Spacer(),
-          BackHomeButton(
+          CustomButton(
             text: 'Back to Home',
             press: () {
               Navigator.of(context).pushNamed(DecitionScreen.routName);

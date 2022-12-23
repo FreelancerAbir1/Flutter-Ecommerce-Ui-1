@@ -7,9 +7,4 @@ const kDefaultFontBold = TextStyle(fontWeight: FontWeight.bold);
 const kDefaultFontNormal = TextStyle(fontWeight: FontWeight.normal);
 const kBannerColor = Color(0xFF4A148C); 
 
-OutlineInputBorder oulineInpuBorder() {
-  return OutlineInputBorder(
-    gapPadding: 10.0,
-    borderRadius: BorderRadius.circular(25),
-  );
-}
+ 

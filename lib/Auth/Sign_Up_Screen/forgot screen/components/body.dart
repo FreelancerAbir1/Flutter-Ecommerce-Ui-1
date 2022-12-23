@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/Forgot_Screen/components/email_input_field.dart';
-import 'package:flutter1/Auth/Sign_Up_Screen/otp_verification/otp_verification_screen.dart';
-import 'custom_continue_btn.dart';
+
+import '../../../../Screen/custom_button.dart';
+import '../../../../Screen/custom_text_form_field.dart';
+import '../../otp_verification/otp_verification_screen.dart';
+import '../../register_screen/register_screen.dart';
 import 'description_text.dart';
 import 'forgot_text.dart';
 import 'sign_up_btn.dart';
@@ -33,17 +35,27 @@ class Body extends StatelessWidget {
               text:
                   'Please enter your Email and we sent a verification\n code and return the code ',
             ),
-            const EmailInputField(
-                hintText: 'Enter Your Email', labelText: 'Email'),
-            CustomContinueButton(
+            CustomTextField(
+              press: (value) {},
+              keyboardType: TextInputType.number,
+              icon: Icons.lock,
+              hint: 'Enter your Email',
+              label: "Email",
+            ),
+            CustomButton(
               text: "Continue",
               press: () {
                 Navigator.of(context)
                     .pushNamed(OtpVerificationScreen.routeName);
               },
             ),
-            const SignUpButton(
-                txt: 'Don\'t have an account? ', text: 'Sign Up'),
+            SignUpButton(
+              txt: 'Don\'t have an account? ',
+              text: 'Sign Up',
+              press: () {
+                Navigator.pushNamed(context, RegisterAccountScreen.routeName);
+              },
+            ),
           ],
         ),
       ),
@@ -52,7 +64,7 @@ class Body extends StatelessWidget {
 
   Padding portraitMode(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(18.0),
       child: SizedBox(
         width: double.infinity,
         child: Column(
@@ -70,17 +82,29 @@ class Body extends StatelessWidget {
                   'Please enter your Email and we sent a verification\n code and return the code ',
             ),
             const Spacer(),
-            const EmailInputField(
-                hintText: 'Enter Your Email', labelText: 'Email'),
+            CustomTextField(
+              press: (value) {},
+              keyboardType: TextInputType.number,
+              icon: Icons.lock,
+              hint: 'Enter your Email',
+              label: "Email",
+            ),
             const Spacer(),
-            CustomContinueButton(
+            CustomButton(
               text: "Continue",
               press: () {
-                Navigator.of(context).pushNamed(OtpVerificationScreen.routeName);
+                Navigator.of(context)
+                    .pushNamed(OtpVerificationScreen.routeName);
               },
             ),
             const Spacer(),
-            const SignUpButton(txt: 'Don\'t have an account? ', text: 'Sign Up'),
+            SignUpButton(
+              txt: 'Don\'t have an account? ',
+              text: 'Sign Up',
+              press: () {
+                Navigator.pushNamed(context, RegisterAccountScreen.routeName);
+              },
+            ),
             const SizedBox(
               height: 20,
             ),

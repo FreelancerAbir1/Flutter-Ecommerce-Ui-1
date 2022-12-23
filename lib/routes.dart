@@ -1,16 +1,19 @@
+ 
+
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/Forgot_Screen/forgot_screen.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/Login_Success/login_success.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/register_screen/register_screen.dart';
-import 'package:flutter1/Auth/Sign_Up_Screen/complete_profile/complete_profile.dart';
-import 'package:flutter1/Auth/Sign_Up_Screen/otp_verification/otp_verification_screen.dart';
-import 'package:flutter1/Auth/Sign_Up_Screen/welcome_back/welcome_back.dart';
-import 'package:flutter1/Auth/auth_change.dart';
-import 'package:flutter1/Screen/Cart/cart_screen.dart';
-import 'package:flutter1/Screen/Home_Screen/Splash_Intro/splash_intro_screen.dart';
-import 'package:flutter1/Screen/Profile_Screen/profile_screen.dart';
-import 'package:flutter1/Screen/decition_screen.dart';
-import 'package:flutter1/Screen/On_Boarding_Screen/onboarding_screen.dart';
+
+import 'Auth/Sign_In_Screen/Login_Success/login_success.dart'; 
+import 'Auth/Sign_In_Screen/complete_profile/complete_profile.dart';
+import 'Auth/Sign_In_Screen/welcome_back/welcome_back.dart';
+import 'Auth/Sign_Up_Screen/forgot screen/forgot_screen.dart';
+import 'Auth/Sign_Up_Screen/otp_verification/otp_verification_screen.dart';
+import 'Auth/Sign_Up_Screen/register_screen/register_screen.dart';
+import 'Auth/auth_change.dart';
+import 'Screen/Cart/cart_screen.dart';
+import 'Screen/Home_Screen/Splash_Intro/splash_intro_screen.dart';
+import 'Screen/On_Boarding_Screen/onboarding_screen.dart';
+import 'Screen/Profile_Screen/profile_screen.dart';
+import 'Screen/decition_screen.dart';
 
 final Map<String, WidgetBuilder> route = {
   AuthChangeScreen.routeName: (context) => const AuthChangeScreen(),

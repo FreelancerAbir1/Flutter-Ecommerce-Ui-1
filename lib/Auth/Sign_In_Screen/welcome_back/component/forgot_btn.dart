@@ -1,11 +1,13 @@
+ 
+
 import 'package:flutter/material.dart';
-import 'package:flutter1/Auth/Sign_In_Screen/Forgot_Screen/forgot_screen.dart';
 
 import '../../../../constant.dart';
+import '../../../Sign_Up_Screen/forgot screen/forgot_screen.dart'; 
 
-class ForgotPasswordText extends StatelessWidget {
+class ForgotButton extends StatelessWidget {
   final String text, txt;
-  const ForgotPasswordText({
+  const ForgotButton({
     Key? key,
     required this.text,
     required this.txt,
@@ -34,7 +36,7 @@ class ForgotPasswordText extends StatelessWidget {
         Expanded(
           flex: 0,
           child: GestureDetector(
-            onTap: () => Navigator.pushNamed(context, ForgotScreen.routeName),
+         onTap: () => Navigator.pushNamed(context, ForgotScreen.routeName),
             child: Text(
               txt,
               style: TextStyle(
