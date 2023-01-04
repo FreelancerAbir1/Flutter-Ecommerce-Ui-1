@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/Model/product.dart';
- import 'package:flutter1/constant.dart';
+import 'package:flutter1/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../custom_button.dart';
@@ -198,7 +198,7 @@ class _BodyState extends State<Body> {
                         topRight: Radius.circular(20),
                       ),
                     ),
-                    height: 70,
+                    height: MediaQuery.of(context).size.width / 8,
                     child: Row(
                       children: [
                         ...List.generate(

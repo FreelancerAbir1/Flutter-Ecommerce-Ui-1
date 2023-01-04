@@ -21,6 +21,7 @@ class ProfileAccountList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Card(
+        
         color: Colors.grey[200],
         child: Padding(
           padding: const EdgeInsets.all(8.0),

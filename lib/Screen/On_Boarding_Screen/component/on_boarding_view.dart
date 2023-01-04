@@ -20,16 +20,12 @@ class OnBoardingView extends StatelessWidget {
         const TokotaText(text: 'Future Shop'),
         TokotaDesc(text: text),
         const Spacer(),
-        Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Image.asset(
-            img,
-            fit: BoxFit.fill,
-            height: MediaQuery.of(context).size.height / 3,
-            width: MediaQuery.of(context).size.width,
-          ),
+        Image.asset(
+          img,
+          fit: BoxFit.fitHeight,
+          height: MediaQuery.of(context).size.height / 3,
+          width: MediaQuery.of(context).size.width,
         ),
-        const Spacer(),
       ],
     );
   }

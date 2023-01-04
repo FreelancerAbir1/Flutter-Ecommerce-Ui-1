@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Screen/Cart/cart_screen.dart'; 
+import 'package:flutter1/Screen/Cart/cart_screen.dart';
 import 'component/main_body.dart';
 import 'component/action_btn.dart';
 import 'component/search_bar.dart';
@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   //Appbar generated
   AppBar customHomeAppbar(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
       centerTitle: false,
       title: const SearchBar(
           img: 'assets/icons/Search Icon.svg', hintText: 'Search Product'),

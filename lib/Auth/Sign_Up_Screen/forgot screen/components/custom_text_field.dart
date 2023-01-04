@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constant.dart';
+import '../../../../constant.dart';
 
 class CustomTextField extends StatelessWidget {
   final ValueChanged press;
@@ -9,14 +9,13 @@ class CustomTextField extends StatelessWidget {
   final String hint;
   final String label;
 
-    const CustomTextField({
-    super.key,
-    required this.press,
-    required this.keyboardType,
-    required this.icon,
-    required this.hint,
-    required this.label,
-  });
+  const CustomTextField(
+      {super.key,
+      required this.press,
+      required this.keyboardType,
+      required this.icon,
+      required this.hint,
+      required this.label});
 
   @override
   Widget build(BuildContext context) {

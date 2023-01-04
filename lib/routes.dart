@@ -1,8 +1,6 @@
- 
-
 import 'package:flutter/material.dart';
 
-import 'Auth/Sign_In_Screen/Login_Success/login_success.dart'; 
+import 'Auth/Sign_In_Screen/Login_Success/login_success.dart';
 import 'Auth/Sign_In_Screen/complete_profile/complete_profile.dart';
 import 'Auth/Sign_In_Screen/welcome_back/welcome_back.dart';
 import 'Auth/Sign_Up_Screen/forgot screen/forgot_screen.dart';
@@ -24,7 +22,8 @@ final Map<String, WidgetBuilder> route = {
   CompleteProfileScreen.routeName: (context) => const CompleteProfileScreen(),
   OtpVerificationScreen.routeName: (context) => const OtpVerificationScreen(),
   OnBoardingScreen.routeName: (context) => const OnBoardingScreen(),
-  WelcomeBackScreen.routeName: (context) => const WelcomeBackScreen(),
+  WelcomeBackScreen.routeName: (context) =>
+      WelcomeBackScreen(signInWithEmailAndPasswordFunction: () => null),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
   SplashIntroScreen.routeName: (context) => const SplashIntroScreen(),

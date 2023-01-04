@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../Screen/custom_button.dart';
-import '../../../../Screen/custom_text_form_field.dart';
+import '../../../Sign_In_Screen/welcome_back/component/signt_up_btn.dart';
 import '../../otp_verification/otp_verification_screen.dart';
-import '../../register_screen/register_screen.dart';
+import 'custom_text_field.dart';
 import 'description_text.dart';
 import 'forgot_text.dart';
-import 'sign_up_btn.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -49,12 +48,9 @@ class Body extends StatelessWidget {
                     .pushNamed(OtpVerificationScreen.routeName);
               },
             ),
-            SignUpButton(
-              txt: 'Don\'t have an account? ',
-              text: 'Sign Up',
-              press: () {
-                Navigator.pushNamed(context, RegisterAccountScreen.routeName);
-              },
+            const SignUpButton(
+              text: 'Don\'t have an account? ',
+              txt: 'Sign Up',
             ),
           ],
         ),
@@ -62,21 +58,17 @@ class Body extends StatelessWidget {
     );
   }
 
-  Padding portraitMode(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(18.0),
-      child: SizedBox(
-        width: double.infinity,
+  SizedBox portraitMode(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(
-              height: 30,
-            ),
+            const Spacer(),
             const ForgotText(text: 'forgot Password'),
-            const SizedBox(
-              height: 10,
-            ),
+            const Spacer(),
             const DescriptionText(
               text:
                   'Please enter your Email and we sent a verification\n code and return the code ',
@@ -98,16 +90,13 @@ class Body extends StatelessWidget {
               },
             ),
             const Spacer(),
-            SignUpButton(
-              txt: 'Don\'t have an account? ',
-              text: 'Sign Up',
-              press: () {
-                Navigator.pushNamed(context, RegisterAccountScreen.routeName);
-              },
+            const SignUpButton(
+              text: 'Don\'t have an account? ',
+              txt: 'Sign Up',
             ),
             const SizedBox(
               height: 20,
-            ),
+            )
           ],
         ),
       ),

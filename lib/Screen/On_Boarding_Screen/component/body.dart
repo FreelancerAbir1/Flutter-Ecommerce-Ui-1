@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter1/Auth/auth_change.dart';
 
 import '../../custom_button.dart';
- import 'dot_generate.dart';
+import 'dot_generate.dart';
 import 'on_boarding_view.dart';
 
 class Body extends StatefulWidget {
@@ -48,20 +48,16 @@ class _BodyState extends State<Body> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: SizedBox(
-                    width: 300,
-                    child: PageView.builder(
-                      onPageChanged: (index) {
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
-                      dragStartBehavior: DragStartBehavior.start,
-                      itemCount: data.length,
-                      itemBuilder: (context, index) => OnBoardingView(
-                        img: data[index]['img'].toString(),
-                        text: data[index]['text'].toString(),
-                      ),
+                  child: PageView.builder(
+                    onPageChanged: (index) {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                    itemCount: data.length,
+                    itemBuilder: (context, index) => OnBoardingView(
+                      img: data[index]['img'].toString(),
+                      text: data[index]['text'].toString(),
                     ),
                   ),
                 ),
@@ -75,13 +71,11 @@ class _BodyState extends State<Body> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Spacer(),
                           ...List.generate(
                             data.length,
                             (index) => DotGenerate(
                                 currentIndex: currentIndex, index: index),
                           ),
-                          const Spacer(),
                         ],
                       ),
                       const Spacer(
@@ -109,20 +103,17 @@ class _BodyState extends State<Body> {
             ),
             Expanded(
               flex: 3,
-              child: SizedBox(
-                width: 300,
-                child: PageView.builder(
-                  onPageChanged: (index) {
-                    setState(() {
-                      currentIndex = index;
-                    });
-                  },
-                  dragStartBehavior: DragStartBehavior.start,
-                  itemCount: data.length,
-                  itemBuilder: (context, index) => OnBoardingView(
-                    img: data[index]['img'].toString(),
-                    text: data[index]['text'].toString(),
-                  ),
+              child: PageView.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+                dragStartBehavior: DragStartBehavior.start,
+                itemCount: data.length,
+                itemBuilder: (context, index) => OnBoardingView(
+                  img: data[index]['img'].toString(),
+                  text: data[index]['text'].toString(),
                 ),
               ),
             ),
@@ -140,13 +131,13 @@ class _BodyState extends State<Body> {
                       ),
                     ],
                   ),
-                 CustomButton(
-                        text: 'Continue',
-                        press: () {
-                          Navigator.pushReplacementNamed(
-                              context, AuthChangeScreen.routeName);
-                        },
-                      ),
+                  CustomButton(
+                    text: 'Continue',
+                    press: () {
+                      Navigator.pushReplacementNamed(
+                          context, AuthChangeScreen.routeName);
+                    },
+                  ),
                 ],
               ),
             ),

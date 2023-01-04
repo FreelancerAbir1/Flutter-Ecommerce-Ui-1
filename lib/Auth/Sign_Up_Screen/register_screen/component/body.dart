@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/Screen/custom_button.dart'; 
-import '../../../../Screen/custom_text_form_field.dart';
+import 'package:flutter1/Screen/custom_button.dart';
 import '../../../Sign_In_Screen/complete_profile/complete_profile.dart';
 import 'condition_text.dart';
+import 'custom_text_field.dart';
 import 'desc_text.dart';
 import 'register_text.dart';
 import 'social_account.dart';
 
 class Body extends StatelessWidget {
-  const Body({
-    Key? key,
-  }) : super(key: key);
-
+    Body({super.key});
+//! Text input field here-------------------------------------
+ final TextEditingController inputEmailController = TextEditingController();
+ final TextEditingController inputPasswordController = TextEditingController();
+  //! Global Form key here
+  final _key = GlobalKey<FormState>();
   @override
-  Widget build(BuildContext context) {
-    var orientation = MediaQuery.of(context).orientation;
+  Widget build(BuildContext context) { 
+    Orientation  orientation = MediaQuery.of(context).orientation;
     if (orientation == Orientation.portrait) {
       return portraitMode(context);
     }
@@ -34,7 +36,8 @@ SingleChildScrollView landscapeMode(BuildContext context) {
           children: [
             const RegisterText(text: 'Register Account'),
             const DescriptionText(
-                text: 'Complete your details on continue\n with social media.'),
+                text:
+                    'Complete your details on continue\n with social media.'),
             const SizedBox(
               height: 30,
             ),
