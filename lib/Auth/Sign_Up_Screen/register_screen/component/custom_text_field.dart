@@ -1,33 +1,32 @@
+
 import 'package:flutter/material.dart';
 
 import '../../../../constant.dart';
 
 class CustomTextField extends StatelessWidget {
   final ValueChanged press;
-  
+  final TextEditingController kController;
   final TextInputType keyboardType;
   final IconData icon;
   final String hint;
-  final String label;
-
+  final String label; 
   const CustomTextField(
       {super.key,
       required this.press,
       required this.keyboardType,
       required this.icon,
       required this.hint,
-      required this.label, });
-
+      required this.label, required this.kController}); 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },
+    if (value == null || value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
+  },
+      controller: kController,
       onChanged: press,
       keyboardType: keyboardType,
       decoration: InputDecoration(

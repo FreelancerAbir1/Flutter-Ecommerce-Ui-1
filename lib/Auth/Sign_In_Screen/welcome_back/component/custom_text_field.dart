@@ -1,25 +1,20 @@
- 
 
-import 'package:flutter/material.dart';
-
-import '../../../../constant.dart';
-
+import 'package:flutter/material.dart'; 
+import '../../../../constant.dart'; 
 class CustomTextField extends StatelessWidget {
   final ValueChanged press;
   final TextEditingController kController;
   final TextInputType keyboardType;
   final IconData icon;
   final String hint;
-  final String label;
-
+  final String label; 
   const CustomTextField(
       {super.key,
       required this.press,
       required this.keyboardType,
       required this.icon,
       required this.hint,
-      required this.label, required this.kController});
-
+      required this.label, required this.kController}); 
   @override
   Widget build(BuildContext context) {
     return TextFormField(

@@ -1,13 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter1/Auth/Sign_In_Screen/welcome_back/component/signt_up_btn.dart';
+ 
 
 import '../../../../Screen/custom_button.dart';
-import '../../../Sign_Up_Screen/register_screen/component/social_account.dart'; 
+import '../../../Sign_Up_Screen/register_screen/component/social_account.dart';
 import 'custom_text_field.dart';
 import 'forgot_btn.dart';
 import 'welcome_back_desc.dart';
 import 'welcome_back_text.dart';
+//! Complete welcome screen
 
 class Body extends StatelessWidget {
   final Function signInWithEmailAndPasswordFunction;
@@ -17,19 +19,26 @@ class Body extends StatelessWidget {
   }) : super(key: key);
 
 //! Sign in account here method---------------------------
-  Future<void> signInWithEmailAndPassword(context) async {
+
+ 
+  Future<void> signInWithEmailAndPassword(context) async { FirebaseAuth auth = FirebaseAuth.instance;
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: inputEmailController.text,
-          password: inputPasswordController.text);
       //! Current state snackbar show
-      if (_key.currentState!.validate()) {
+      if (inputEmailController.text.isNotEmpty &&
+          inputPasswordController.text.isNotEmpty) {
+        final credential = await auth.signInWithEmailAndPassword(
+            email: inputEmailController.text,
+            password: inputPasswordController.text);
+        //! Return Data
+        return signInWithEmailAndPasswordFunction(credential.user);
+      } else if (inputEmailController.text.isEmpty ||
+          inputPasswordController.text.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Processing Data')),
+          const SnackBar(
+            content: Text(" Black Field not allow."),
+          ),
         );
       }
-      //! Return Data
-      return signInWithEmailAndPasswordFunction(credential.user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -38,14 +47,14 @@ class Body extends StatelessWidget {
       } else if (e.code == 'wrong-password') {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('No user found for that email.')),
-        ); 
+        );
       }
     }
   }
 
 //! Text input field here-------------------------------------
- final TextEditingController inputEmailController = TextEditingController();
- final TextEditingController inputPasswordController = TextEditingController();
+  final TextEditingController inputEmailController = TextEditingController();
+  final TextEditingController inputPasswordController = TextEditingController();
   //! Global Form key here
   final _key = GlobalKey<FormState>();
   @override
@@ -58,7 +67,6 @@ class Body extends StatelessWidget {
   }
 
 //! Orientaion Builder
-
   SingleChildScrollView landscapeMode(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -76,12 +84,12 @@ class Body extends StatelessWidget {
                     text:
                         'Complete your Detail and continue\n with social media'),
                 const SizedBox(
-                  height: 10 * 3,
+                  height: 10,
                 ),
                 CustomTextField(
                   kController: inputEmailController,
                   press: (value) {},
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.name,
                   icon: Icons.lock,
                   hint: 'Enter your Email',
                   label: "Email",
@@ -98,7 +106,7 @@ class Body extends StatelessWidget {
                   label: "Password",
                 ),
                 const SizedBox(
-                  height: 10 * 3,
+                  height: 10,
                 ),
                 const ForgotButton(text: 'Remember me', txt: 'Forgot Password'),
                 const SizedBox(
@@ -109,19 +117,22 @@ class Body extends StatelessWidget {
                   press: () {
                     //! Sign in account press here
                     signInWithEmailAndPassword(context);
-                    //!validate press here
+                    if (_key.currentState!.validate()) {}
                   },
                 ),
                 const SizedBox(
-                  height: 10 * 3,
+                  height: 10,
                 ),
                 const SocialAccount(),
                 const SizedBox(
-                  height: 10 * 3,
+                  height: 10,
                 ),
                 const SignUpButton(
                   text: 'Don\'t have an account?',
                   txt: 'Sign Up',
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
               ],
             ),
@@ -138,63 +149,65 @@ class Body extends StatelessWidget {
         padding: const EdgeInsets.all(18.0),
         child: Form(
           key: _key,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Spacer(),
-              const WelcomeBackText(text: 'Welcome Back'),
-              const WelcomeBackDesc(
-                  text:
-                      'Complete your Detail and continue\n with social media'),
-              const Spacer(),
-              CustomTextField(
-                kController: inputEmailController,
-                press: (value) {},
-                keyboardType: TextInputType.number,
-                icon: Icons.lock,
-                hint: 'Enter your Email',
-                label: "Email",
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              CustomTextField(
-                kController: inputPasswordController,
-                press: (value) {},
-                keyboardType: TextInputType.number,
-                icon: Icons.lock,
-                hint: 'Enter your Password',
-                label: "Password",
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const ForgotButton(text: 'Remember me', txt: 'Forgot Password'),
-              const Spacer(),
-              CustomButton(
-                text: "Continue",
-                press: () {
-                  //! Sign in account press here
-                  signInWithEmailAndPassword(context);
-                  //!validate press here
-                  if (_key.currentState!.validate()) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
-                  }
-                },
-              ),
-              const Spacer(),
-              const SocialAccount(),
-              const Spacer(),
-              const SignUpButton(
-                text: 'Don\'t have an account?',
-                txt: 'Sign Up',
-              ),
-              const SizedBox(
-                height: 20,
-              )
-            ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                const WelcomeBackText(text: 'Welcome Back'),
+                const WelcomeBackDesc(
+                    text:
+                        'Complete your Detail and continue\n with social media'),
+                const SizedBox(
+                  height: 30,
+                ),
+                CustomTextField(
+                  kController: inputEmailController,
+                  press: (value) {},
+                  keyboardType: TextInputType.emailAddress,
+                  icon: Icons.lock,
+                  hint: 'Enter your Email',
+                  label: "Email",
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomTextField(
+                  kController: inputPasswordController,
+                  press: (value) {},
+                  keyboardType: TextInputType.name,
+                  icon: Icons.lock,
+                  hint: 'Enter your Password',
+                  label: "Password",
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const ForgotButton(text: 'Remember me', txt: 'Forgot Password'),
+                const SizedBox(
+                  height: 30,
+                ),
+                CustomButton(
+                  text: "Continue",
+                  press: () {
+                    //! Sign in account press here
+                    signInWithEmailAndPassword(context);
+                    //!validate press here
+                    if (_key.currentState!.validate()) {}
+                  },
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const SocialAccount(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const SignUpButton(
+                  text: 'Don\'t have an account?',
+                  txt: 'Sign Up',
+                ),
+              ],
+            ),
           ),
         ),
       ),
